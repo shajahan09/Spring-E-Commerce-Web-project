@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE tiles-definitions PUBLIC  
+      "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+      "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+<tiles-definitions>  
+   <!-- Base Define -->
+   <definition name="auth.base.definition" 
+       template="/WEB-INF/jsp/auth/index.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="body" value="" />  
+       
+   </definition> 
+   <definition name="sign.base.definition" 
+       template="/WEB-INF/jsp/auth/index.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="body" value="" />  
+       
+   </definition>  
+ 
+   <definition name="loginPage" extends="auth.base.definition">  
+       <put-attribute name="title" value="Login Page" />  
+       <put-attribute name="body" value="/WEB-INF/jsp/auth/login.jsp" />  
+   </definition>
+   <definition name="signupPage" extends="sign.base.definition">  
+       <put-attribute name="title" value="Registration page" />  
+       <put-attribute name="body" value="/WEB-INF/jsp/auth/signup.jsp" />  
+   </definition>
+   
+   <definition name="product.base.definition" 
+       template="/WEB-INF/jsp/auth/main/index.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="body" value="" />
+       <put-attribute name="header" value="/WEB-INF/jsp/auth/main/header.jsp" />
+       <put-attribute name="footer" value="/WEB-INF/jsp/auth/main/footer.jsp" />  
+       
+   </definition>
+   
+    <definition name="productsPage" extends="product.base.definition">  
+       <put-attribute name="title" value="product List" />  
+       <put-attribute name="body" value="/WEB-INF/jsp/auth/main/products.jsp" />  
+   </definition>
+
+</tiles-definitions>
