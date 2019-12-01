@@ -25,7 +25,7 @@
                         <div class="dropdown-menu mega-dropdown-menu w3ls_vegetables_menu">
                             <div class="w3ls_vegetables">
                                 <ul>	
-                                    <li><a href="vegetables.html">Vegetables</a></li>
+                                    <li><a href="/SpringWithHibernate/home">Vegetables</a></li>
                                     <li><a href="vegetables.html">Fruits</a></li>
                                 </ul>
                             </div>                  

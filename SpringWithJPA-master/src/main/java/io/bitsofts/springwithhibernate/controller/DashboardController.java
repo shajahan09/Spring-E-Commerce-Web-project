@@ -5,8 +5,11 @@
  */
 package io.bitsofts.springwithhibernate.controller;
 
+
+import io.bitsofts.springwithhibernate.model.Brand;
 import io.bitsofts.springwithhibernate.model.Item;
 import io.bitsofts.springwithhibernate.model.Product;
+import io.bitsofts.springwithhibernate.repository.BrandRepository;
 import io.bitsofts.springwithhibernate.repository.ProductRepository;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +20,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.request.RequestScope;
 
 /**
  *
  * @author Administrator
  */
 @Controller
-@RequestMapping(value = "/dashboard")
 public class DashboardController {
     
     @Autowired
@@ -42,10 +45,12 @@ public class DashboardController {
             }
             columnsProducts.add(products.get(i));
         }
-        System.out.println("------------------rows "+productRowList.size());
+//        System.out.println("------------------rows "+productRowList.size());
         model.addAttribute("items", productRowList);
         return "homePage";
     }
+    
+    
     
     @RequestMapping(value = "/cartItems")
     public String cartItems(HttpSession session){
@@ -59,21 +64,62 @@ public class DashboardController {
         }
     }
     
+    
     @RequestMapping(value = "/addItem/{id}")
-    public String addCartItem(@PathVariable Integer id, HttpSession session){
+    public String addCartItem(@PathVariable Integer id, RequestScope requestScope, HttpServletRequest request, HttpSession session){
         Product p = pr.findOne(id);
+//        String path = (String)request.getAttribute(HandlerMapping.PATH_WITHIN_HANDLER_MAPPING_ATTRIBUTE);
+//       System.out.println("Path ---------------- "+path);
         Item i = new Item();
+       
         i.setProduct(p);
         i.setQuantity(1);
         if(session.getAttribute("cart") == null){
             List<Item> cart = new ArrayList<>();
             cart.add(i);
             session.setAttribute("cart", cart);
+           
         } else {
             List<Item> cart = (List<Item>) session.getAttribute("cart");
-            cart.add(i);
+            int index = exists(id, session);
+            if(index == -1){
+                cart.add(i);    
+            }else{
+                int qty = cart.get(index).getQuantity()+1;
+                cart.get(index).setQuantity(qty);
+            }
+            
             session.setAttribute("cart", cart);
         }
-        return "redirect:/dashboard/home";
+        return "redirect:/";
+        
+    
     }
+    
+    //remove.........
+    
+    @RequestMapping(value = "/remove/{id}")
+	public String remove(@PathVariable( value = "id") Integer id, HttpSession session) {
+	
+		List<Item> cart = (List<Item>) session.getAttribute("cart");
+		int index = exists(id, session);
+		cart.remove(index);
+                
+		session.setAttribute("cart", cart);
+                
+		return "redirect:/cartItems";
+	}
+           
+	private int exists(Integer id,HttpSession session) {
+            List<Item> cart = (List<Item>) session.getAttribute("cart");
+		for (int i = 0; i < cart.size(); i++) {
+			if (cart.get(i).getProduct().getId() == id ) {
+                           
+				return i;
+			}
+		}
+		return -1;
+	}
+        
+        
 }

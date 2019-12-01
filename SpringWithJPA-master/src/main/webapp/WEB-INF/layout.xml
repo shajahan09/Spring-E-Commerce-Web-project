@@ -9,24 +9,67 @@
        template="/WEB-INF/jsp/auth/main/index.jsp">  
        <put-attribute name="title" value="" />  
        <put-attribute name="body" value="" />
+       <put-attribute name="check" value="" />
+       <put-attribute name="link" value="" />
+       
+       
+        <put-attribute name="header" value="/WEB-INF/jsp/auth/main/header.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/auth/main/footer.jsp" />  
+        
+   </definition>
+   
+   <!--chekout page -->
+   <definition name="checkoutPage" extends="test.base.definition">  
+       <put-attribute name="title" value="check out page" />  
+       <put-attribute name="check" value="/WEB-INF/jsp/auth/main/checkout.jsp" />
+       
+   </definition>
+   
+  
+ <definition name="menuPage" extends="test.base.definition">  
+       <put-attribute name="title" value="Menu Page" /> 
+       <put-attribute name="link" value="/WEB-INF/jsp/auth/main/nameList.jsp" /> 
+       <put-attribute name="body" value="/WEB-INF/jsp/auth/main/menu.jsp" />
+       
+   </definition>
+   <definition name="homePage" extends="test.base.definition">  
+       <put-attribute name="title" value="vagetablePage" />  
+       <put-attribute name="link" value="/WEB-INF/jsp/auth/main/nameList.jsp" />
+       <put-attribute name="body" value="/WEB-INF/jsp/auth/main/content.jsp" />
+       
+       
+   </definition>
+   
+   
+   <definition name="indexPage" extends="test.base.definition">  
+       <put-attribute name="title" value="index" />  
+       <put-attribute name="body" value="/WEB-INF/jsp/auth/main/menu.jsp" />
+    
+   </definition>
+   
+   <definition name="cart.base.definition" 
+       template="/WEB-INF/jsp/auth/main/cartIndex.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="body" value="" />
        <put-attribute name="link" value="/WEB-INF/jsp/auth/main/nameList.jsp" />
         <put-attribute name="header" value="/WEB-INF/jsp/auth/main/header.jsp" />
         <put-attribute name="footer" value="/WEB-INF/jsp/auth/main/footer.jsp" />  
         
    </definition>
- <definition name="homePage" extends="test.base.definition">  
-       <put-attribute name="title" value="menu Page" />  
-       <put-attribute name="body" value="/WEB-INF/jsp/auth/main/menu.jsp" />
-       
+   <definition name="cartPage" extends="cart.base.definition">  
+       <put-attribute name="title" value="cart Page" />  
+       <put-attribute name="body" value="/WEB-INF/jsp/auth/main/cartList.jsp" />  
    </definition>
    
    
     <definition name="productsPage" extends="test.base.definition">  
-       <put-attribute name="title" value="product List" />  
+       <put-attribute name="title" value="brand List" />
+       <put-attribute name="link" value="/WEB-INF/jsp/auth/main/nameList.jsp" />  
        <put-attribute name="body" value="/WEB-INF/jsp/auth/main/products.jsp" />  
    </definition>
     <definition name="householdPage" extends="test.base.definition">  
-       <put-attribute name="title" value="house page" />  
+       <put-attribute name="title" value="house page" /> 
+       <put-attribute name="link" value="/WEB-INF/jsp/auth/main/nameList.jsp" /> 
        <put-attribute name="body" value="/WEB-INF/jsp/auth/main/household.jsp" />  
    </definition>
  

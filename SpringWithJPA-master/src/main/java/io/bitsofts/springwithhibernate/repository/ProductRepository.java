@@ -7,6 +7,7 @@ package io.bitsofts.springwithhibernate.repository;
 
 import io.bitsofts.springwithhibernate.model.Product;
 import java.io.Serializable;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,5 +17,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository(value = "productRepo")
 public interface ProductRepository extends CrudRepository<Product, Integer>{
-    
+ 
 }

@@ -38,53 +38,61 @@ public class AuthController {
     public String signupGet(){
         return "signupPage";
     }
-    @RequestMapping(method = RequestMethod.GET, value = "/products")
-    public String products(){
-        return "productsPage";
-    }
+   
     
-//    @RequestMapping(method = RequestMethod.POST, value = "/loginSubmit")
-//     public String loginSubmitPost(HttpServletRequest request, Model model) {
-//         String name = request.getParameter("name");
-//         String password = request.getParameter("password");
-////         System.out.println("----------------- "+name);
-//         if(!name.isEmpty() && !password.isEmpty()) {
-//             User u = repository.findByNameAndPassword(name, password);
-//             System.out.println("----- "+u.getName());
-//             if(!u.equals(null)) {
-//                 return "homePage";
-//             } else {
-//                 model.addAttribute("error", "User Name or Password does not  match!");
-//                 return "loginPage";
-//             }
-//         }
-//         model.addAttribute("error", "Input fileds");
-//         return "loginPage";
-//     }
-//     @RequestMapping(method=RequestMethod.POST,value = "/signupSubmit")
-//     public String signup(HttpServletRequest request,Model model){
+    @RequestMapping(method = RequestMethod.POST, value = "/loginSubmit")
+     public String loginSubmitPost(HttpServletRequest request, Model model) {
+         String name = request.getParameter("name");
+         String password = request.getParameter("password");
+
+         if(!name.isEmpty() && !password.isEmpty()) {
+             User u = repository.findByNameAndPassword(name, password);
+
+             if(!u.equals(null)) {
+                 return "addProducts";
+             } else {
+                 model.addAttribute("error", "User Name or Password does not  match!");
+                 return "loginPage";
+             }
+         }
+         model.addAttribute("error", "Input fileds");
+         return "loginPage";
+     }
+     @RequestMapping(method=RequestMethod.POST,value = "/signupSubmit")
+     public String signup(HttpServletRequest request,Model model){
+         
+        String name = request.getParameter("name");
+        String email = request.getParameter("email");
+        String phone = request.getParameter("phone");
+        String gender = request.getParameter("gender");
+        String password = request.getParameter("password");
+        User usr = new User();
+        usr.setName(name);
+        usr.setEmail(email);
+        usr.setPassword(password);
+        usr.setPhone(phone);
+        usr.setGender(gender);
+        try{
+          repository.save(usr);
+          return "loginPage";
+        }
+        catch(Exception e){
+            System.out.println("Error "+e.getMessage());
+            model.addAttribute("Error", " Update");
+            return "signupPage";
+        }
+        
+       
+     }
+     @RequestMapping(value = "/checkout")
+        public String check(){
+         
+         return "checkoutPage";
+     }
+//        @RequestMapping(value = "/adminLog")
+//        public String admin(){
 //         
-//        String name = request.getParameter("name");
-//        String email = request.getParameter("email");
-//        String phone = request.getParameter("phone");
-//        String gender = request.getParameter("gender");
-//        String password = request.getParameter("password");
-//        User usr = new User();
-//        usr.setName(name);
-//        usr.setEmail(email);
-//        usr.setPassword(password);
-//        usr.setPhone(phone);
-//        usr.setGender(gender);
-//        try{
-//          repository.save(usr);
-//          return "loginPage";
-//        }
-//        catch(Exception e){
-//            System.out.println("Error "+e.getMessage());
-//            model.addAttribute("Error", " Update");
-//            return "signupPage";
-//        }
-//       
+//         return "addProduct";
 //     }
       
     

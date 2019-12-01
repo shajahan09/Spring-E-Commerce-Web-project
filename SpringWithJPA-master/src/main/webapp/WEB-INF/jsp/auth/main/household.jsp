@@ -12,7 +12,7 @@
         <h3>Best Deals For New Products<span class="blink_me"></span></h3>
     </div>
     <div class="w3ls_w3l_banner_nav_right_grid w3ls_w3l_banner_nav_right_grid_sub">
-        <h3>*Household Products*</h3>
+        <h3 style="color: white">*Household Products*</h3>
         <div class="w3ls_w3l_banner_nav_right_grid1">
             <h6>cleaning</h6>
             <div class="col-md-3 w3ls_w3l_banner_left">

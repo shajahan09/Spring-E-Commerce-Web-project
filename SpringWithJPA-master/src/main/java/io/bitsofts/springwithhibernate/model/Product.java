@@ -28,10 +28,20 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private  int id;
 	
-	
 	private String name;
 	private int qty;
 	private double price;
+        private String img;
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+        
+        
 	public int getId() {
 		return id;
 	}

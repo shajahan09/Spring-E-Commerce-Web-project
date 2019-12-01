@@ -1,6 +1,11 @@
 io\bitsofts\springwithhibernate\model\Product.class
 io\bitsofts\springwithhibernate\controller\AuthController.class
-io\bitsofts\springwithhibernate\Home.class
+io\bitsofts\springwithhibernate\repository\BrandRepository.class
+io\bitsofts\springwithhibernate\controller\Home.class
+io\bitsofts\springwithhibernate\model\Brand.class
 io\bitsofts\springwithhibernate\model\User.class
 io\bitsofts\springwithhibernate\repository\UserRepository.class
+io\bitsofts\springwithhibernate\controller\menuController.class
+io\bitsofts\springwithhibernate\model\Item.class
+io\bitsofts\springwithhibernate\controller\DashboardController.class
 io\bitsofts\springwithhibernate\repository\ProductRepository.class

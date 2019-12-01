@@ -11,8 +11,20 @@ package io.bitsofts.springwithhibernate.model;
  */
 public class Item {
     Product product;
+    Brand brand;
     Integer quantity;
 
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    
+    
+    
     public Product getProduct() {
         return product;
     }
